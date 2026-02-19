@@ -74,9 +74,19 @@ if st.button("Use Sample Transaction"):
 if st.button("Predict Transaction"):
     input_array = np.array(input_data).reshape(1, -1)
     input_scaled = scaler.transform(input_array)
-    prediction = model.predict(input_scaled)
 
-    if prediction[0] == 1:
+    # Get probability
+    probability = model.predict_proba(input_scaled)[0][1]
+    prediction = 1 if probability >= 0.5 else 0
+
+    st.subheader("🔎 Prediction Result")
+
+    if prediction == 1:
         st.error("⚠ Fraudulent Transaction Detected!")
     else:
         st.success("✅ Genuine Transaction")
+
+    st.write(f"Fraud Probability: **{probability:.2%}**")
+
+    st.progress(float(probability))
+
