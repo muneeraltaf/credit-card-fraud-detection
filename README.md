@@ -138,7 +138,7 @@ credit_card_fraud_project/
 
 1. Clone the repository
 
-git clone https://github.com/yourusername/credit-card-fraud-detection.git
+git clone https://github.com/muneeraltaf/credit-card-fraud-detection.git
 
 
 2. Navigate into project folder
