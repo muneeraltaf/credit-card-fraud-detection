@@ -50,6 +50,18 @@ Model selection was based on Recall for Class 1 (Fraud), as detecting fraudulent
 
 Final model selected: **Logistic Regression**
 
+## 📊 Model Evaluation Details
+
+Evaluation Metrics Used:
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+
+Why Recall Was Prioritized:
+In fraud detection systems, missing a fraudulent transaction (False Negative) is more costly than incorrectly flagging a genuine transaction. Therefore, model selection was based primarily on Recall for the fraud class.
+
+
 ---
 
 ## 🌐 Deployment
