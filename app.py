@@ -1,85 +1,74 @@
 import streamlit as st
 import joblib
 import numpy as np
+import pandas as pd
 
 # Load model and scaler
 model = joblib.load("best_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
-st.set_page_config(
-    page_title="Credit Card Fraud Detection",
-    layout="wide"
-)
+# Load sample transactions
+sample_df = pd.read_csv("sample_transactions.csv")
+
+st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
 
 st.title("💳 Credit Card Fraud Detection System")
 
 st.markdown("""
 This system predicts whether a transaction is **Fraudulent (1)** or **Genuine (0)**.
 
-⚠ Features V1–V28 are anonymized PCA-transformed components.
+Instead of manually entering PCA features, you can now select real sample transactions.
 """)
 
 st.divider()
 
 # -------------------------------
-# MODEL PERFORMANCE SECTION
+# MODEL PERFORMANCE
 # -------------------------------
 
 with st.expander("📊 Model Performance Summary"):
-
     st.markdown("""
     **Model Used:** Logistic Regression  
     **ROC-AUC Score:** 0.98  
     **Recall (Fraud Class):** 0.92  
-    **Precision (Fraud Class):** ~0.90  
-    """)
-
-    st.markdown("""
-    ### Why Recall is Important?
-
-    In fraud detection systems, missing a fraudulent transaction 
-    (False Negative) is more costly than incorrectly flagging a genuine transaction.
-
-    Therefore, model selection prioritized **Recall for the Fraud class**.
     """)
 
 st.divider()
 
 # -------------------------------
-# INPUT SECTION
+# SAMPLE SELECTION
 # -------------------------------
 
-col1, col2 = st.columns(2)
+st.subheader("🔎 Select a Sample Transaction")
 
-input_data = []
+transaction_type = st.radio(
+    "Choose Transaction Type:",
+    ("Genuine Transaction", "Fraudulent Transaction")
+)
 
-with col1:
-    st.subheader("Transaction Features (V1 - V15)")
-    for i in range(15):
-        value = st.number_input(f"V{i+1}", value=0.0)
-        input_data.append(value)
+if transaction_type == "Genuine Transaction":
+    selected_row = sample_df[sample_df["Class"] == 0].sample(1)
+else:
+    selected_row = sample_df[sample_df["Class"] == 1].sample(1)
 
-with col2:
-    st.subheader("Transaction Features (V16 - V30)")
-    for i in range(15, 30):
-        value = st.number_input(f"V{i+1}", value=0.0)
-        input_data.append(value)
+st.write("Selected Transaction Preview:")
+st.dataframe(selected_row)
 
 st.divider()
 
-if st.button("Use Sample Transaction"):
-    input_data = list(np.random.normal(0, 1, 30))
-    st.success("Sample data generated. Click Predict.")
+# -------------------------------
+# PREDICTION
+# -------------------------------
 
-if st.button("Predict Transaction"):
-    input_array = np.array(input_data).reshape(1, -1)
-    input_scaled = scaler.transform(input_array)
+if st.button("Predict Selected Transaction"):
 
-    # Get probability
-    probability = model.predict_proba(input_scaled)[0][1]
+    X_input = selected_row.drop("Class", axis=1).values
+    X_scaled = scaler.transform(X_input)
+
+    probability = model.predict_proba(X_scaled)[0][1]
     prediction = 1 if probability >= 0.5 else 0
 
-    st.subheader("🔎 Prediction Result")
+    st.subheader("📢 Prediction Result")
 
     if prediction == 1:
         st.error("⚠ Fraudulent Transaction Detected!")
@@ -87,6 +76,4 @@ if st.button("Predict Transaction"):
         st.success("✅ Genuine Transaction")
 
     st.write(f"Fraud Probability: **{probability:.2%}**")
-
     st.progress(float(probability))
-
