@@ -12,16 +12,43 @@ st.set_page_config(
 )
 
 st.title("💳 Credit Card Fraud Detection System")
+
 st.markdown("""
 This system predicts whether a transaction is **Fraudulent (1)** or **Genuine (0)**.
 
-⚠ Note: Features V1–V28 are anonymized PCA-transformed components.
-Users can input sample values for demonstration purposes.
+⚠ Features V1–V28 are anonymized PCA-transformed components.
 """)
 
 st.divider()
 
-# Create two columns layout
+# -------------------------------
+# MODEL PERFORMANCE SECTION
+# -------------------------------
+
+with st.expander("📊 Model Performance Summary"):
+
+    st.markdown("""
+    **Model Used:** Logistic Regression  
+    **ROC-AUC Score:** 0.98  
+    **Recall (Fraud Class):** 0.92  
+    **Precision (Fraud Class):** ~0.90  
+    """)
+
+    st.markdown("""
+    ### Why Recall is Important?
+
+    In fraud detection systems, missing a fraudulent transaction 
+    (False Negative) is more costly than incorrectly flagging a genuine transaction.
+
+    Therefore, model selection prioritized **Recall for the Fraud class**.
+    """)
+
+st.divider()
+
+# -------------------------------
+# INPUT SECTION
+# -------------------------------
+
 col1, col2 = st.columns(2)
 
 input_data = []
@@ -40,7 +67,6 @@ with col2:
 
 st.divider()
 
-# Sample Data Button
 if st.button("Use Sample Transaction"):
     input_data = list(np.random.normal(0, 1, 30))
     st.success("Sample data generated. Click Predict.")
