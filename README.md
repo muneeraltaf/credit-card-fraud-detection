@@ -4,6 +4,10 @@
 This project builds an end-to-end Machine Learning pipeline to detect fraudulent credit card transactions using supervised learning techniques.
 
 The dataset is highly imbalanced, and special techniques were used to handle class imbalance.
+Dataset not included due to GitHub file size limitations.
+Download dataset from:
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
 
 ---
 
