@@ -8,6 +8,8 @@ Dataset not included due to GitHub file size limitations.
 Download dataset from:
 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
+## 🌍 Live Demo
+https://credit-card-fraud-detection-2ji7xzzirr6uwqpuj97rie.streamlit.app/
 
 ---
 
