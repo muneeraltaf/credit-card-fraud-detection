@@ -1,7 +1,7 @@
 # 💳 Credit Card Fraud Detection System
 
 ## 🌍 Live Demo
-🔗 https://your-app-name.streamlit.app  
+🔗 https://credit-card-fraud-detection-2ji7xzzirr6uwqpuj97rie.streamlit.app/ 
 
 ---
 
