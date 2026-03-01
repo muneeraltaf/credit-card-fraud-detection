@@ -12,7 +12,7 @@ sample_df = pd.read_csv("sample_transactions.csv")
 
 st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
 
-st.title("💳 Credit Card Fraud Detection System")
+st.title("Credit Card Fraud Detection System")
 
 st.markdown("""
 This system predicts whether a transaction is **Fraudulent (1)** or **Genuine (0)**.
@@ -26,7 +26,7 @@ st.divider()
 # MODEL PERFORMANCE
 # -------------------------------
 
-with st.expander("📊 Model Performance Summary"):
+with st.expander("Model Performance Summary"):
     st.markdown("""
     **Model Used:** Logistic Regression  
     **ROC-AUC Score:** 0.98  
@@ -39,7 +39,7 @@ st.divider()
 # SAMPLE SELECTION
 # -------------------------------
 
-st.subheader("🔎 Select a Sample Transaction")
+st.subheader("Select a Sample Transaction")
 
 transaction_type = st.radio(
     "Choose Transaction Type:",
@@ -68,7 +68,7 @@ if st.button("Predict Selected Transaction"):
     probability = model.predict_proba(X_scaled)[0][1]
     prediction = 1 if probability >= 0.5 else 0
 
-    st.subheader("📢 Prediction Result")
+    st.subheader("Prediction Result")
 
     if prediction == 1:
         st.error("⚠ Fraudulent Transaction Detected!")
