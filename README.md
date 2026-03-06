@@ -1,11 +1,11 @@
-# 💳 Credit Card Fraud Detection System
+# Credit Card Fraud Detection System
 
-## 🌍 Live Demo
+## Live Demo
 🔗 https://credit-card-fraud-detection-2ji7xzzirr6uwqpuj97rie.streamlit.app/ 
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project builds and deploys an end-to-end Machine Learning system to detect fraudulent credit card transactions.
 
@@ -15,7 +15,7 @@ The final solution is deployed as an interactive web application using Streamlit
 
 ---
 
-## 🚀 Technologies Used
+## Technologies Used
 
 - Python
 - Pandas & NumPy
@@ -30,7 +30,7 @@ The final solution is deployed as an interactive web application using Streamlit
 
 ---
 
-## 📊 Problem Type
+## Problem Type
 
 Binary Classification:
 
@@ -39,7 +39,7 @@ Binary Classification:
 
 ---
 
-## ⚖ Handling Class Imbalance
+## Handling Class Imbalance
 
 The dataset contains significantly fewer fraudulent transactions compared to genuine ones.
 
@@ -51,7 +51,7 @@ To address this imbalance:
 
 ---
 
-## 🤖 Model Development
+## Model Development
 
 ### Models Trained
 - Logistic Regression
@@ -72,7 +72,7 @@ It achieved higher recall for fraudulent transactions compared to Random Forest.
 
 ---
 
-## 📈 Model Performance
+## Model Performance
 
 | Metric | Logistic Regression |
 |--------|---------------------|
@@ -88,7 +88,7 @@ Therefore, the model was selected based on its ability to detect fraudulent tran
 
 ---
 
-## 🧠 Feature Explanation
+## Feature Explanation
 
 The dataset is anonymized for confidentiality.
 
@@ -102,21 +102,21 @@ These features are not human-interpretable and are automatically generated from 
 
 ---
 
-## 🌐 Application Features
+## Application Features
 
 The deployed Streamlit application includes:
 
-- 📊 Model Performance Summary section
-- 🔎 Realistic sample transaction selection (Fraud / Genuine)
-- 📈 Fraud probability display
-- 📉 Confidence progress bar
-- 🎯 Business-focused prediction explanation
+- Model Performance Summary section
+- Realistic sample transaction selection (Fraud / Genuine)
+- Fraud probability display
+- Confidence progress bar
+- Business-focused prediction explanation
 
 Instead of manually entering PCA values, users can simulate realistic transactions using real dataset samples.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 credit_card_fraud_project/
 │
@@ -134,7 +134,7 @@ credit_card_fraud_project/
 
 ---
 
-## ▶️ How to Run Locally
+## How to Run Locally
 
 1. Clone the repository
 
@@ -164,7 +164,7 @@ streamlit run app.py
 
 ---
 
-## 📥 Dataset
+## Dataset
 
 Dataset not included due to GitHub file size limitations.
 
@@ -173,7 +173,7 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ---
 
-## 🎯 Key Learnings
+## Key Learnings
 
 - Handling severely imbalanced datasets
 - Proper metric selection in real-world ML problems
@@ -185,6 +185,6 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ---
 
-## 👨‍💻 Muneer Altaf
+## Muneer Altaf
 
 Built as part of practical Machine Learning training and deployment practice.
