@@ -1,6 +1,6 @@
+.DS_Store
 venv/
 __pycache__/
 .ipynb_checkpoints/
 data/creditcard.csv
 .vscode/
-.DS_Store
